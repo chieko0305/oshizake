@@ -1,0 +1,34 @@
+<div class="container px-5 px-sm-0">
+  <div class="row">
+    <div class="col-md-3">
+      <!--部分テンプレート-->
+      <%= render 'drinks/drinks', user: @user,drink: @drink,taste: @taste,tastes: @tastes %>
+      <!--部分テンプレート終-->
+    </div>
+
+    <!--ユーザー一覧-->
+    <div class="col-md-8 offset-md-1">
+      <h1>Users</h1>
+      <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">name</th>
+            <th scope="col">introduction</th>
+            <th></th>
+          </tr>
+        </thead>
+         <tbody>
+          <% @users.each do |list| %>
+            <tr>
+              <th scope="col">#</th>
+              <td><%= @user.name %></td>
+              <td><%= @user.introduction %></td>
+              <td><%= link_to "Show", user_path(@user.id) %></td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

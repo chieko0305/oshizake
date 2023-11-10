@@ -1,0 +1,31 @@
+<h1>Search</h1>
+<div class="col-md-5 my-3 p-3 border shadow-sm">
+  <%= form_with url: drinks_path, method: :get, local: true, class: 'boards__searchForm' do |f|%>
+    <div class="input-group">
+      <%= f.text_field :brand, class: "form-control search-control", placeholder: "銘柄を入力" %>
+    </div>
+    <div class="input-group">
+      <%= f.collection_check_boxes :genres, Drink.genres, :last, :first, include_hidden: false do |b| %>
+        <div class="mx-1">
+          <%= b.label do %>
+    	      <%= b.check_box %>
+    	      <%= I18n.t("enums.drink.genres.#{b.text}") %>
+  	      <% end %>
+  	    </div>
+      <% end %>
+    </div>
+    <div class="input-group">
+      <%= f.collection_check_boxes :taste_ids, @tastes, :id, :taste, include_hidden: false do |b| %>
+        <div class="mx-1">
+  	      <%= b.check_box %>
+  	      <%= b.label %>
+  	    </div>
+      <% end %>
+    </div>
+    <div>
+      <%= button_tag type: "submit", class: "border rounded-pill shadow-sm search-btn" do %>
+	      <i class="fas fa-search"></i>
+      <% end %>
+    </div>
+  <% end %>
+</div>

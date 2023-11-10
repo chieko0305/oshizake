@@ -1,0 +1,9 @@
+ja:
+enums:
+drink/genre:
+drink/genres:
+      beer: ビール
+      wine: ワイン
+      wiskey: ウィスキー
+      shouchu: 焼酎
+      other: その他

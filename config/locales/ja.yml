@@ -1,0 +1,17 @@
+ja:
+  enums:
+    drink:
+      genres:
+        beer: ビール
+        wine: ワイン
+        wiskey: ウィスキー
+        shouchu: 焼酎
+        other: その他
+  activerecord:
+    models:
+      drink: お酒
+    attributes:
+      drink:
+        brand: 銘柄
+        genre: ジャンル
+        text: 商品説明

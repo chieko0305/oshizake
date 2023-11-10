@@ -1,0 +1,47 @@
+<div class="container px-5 px-sm-0">
+  <div class="row">
+    <div class="col-md-3">
+      <!--部分テンプレート-->
+      <%= render 'drinks', user: @user,drink: @drink,taste: @taste,tastes: @tastes %>
+      <!--部分テンプレート終-->
+    </div>
+
+<!--お酒の詳細-->
+    <div class="col-md-8 offset-md-1">
+      <h1>drink detail</h1>
+      <table class="table table-hover">
+        <thead>
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">銘柄</th>
+            <th scope="col">ジャンル</th>
+            <th scope="col">テイスト</th>
+            <th scope="col">紹介文</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>
+              <%= @user.name %>
+            </td>
+            <td><%= @drink.brand %></td>
+            <td><%= @drink.genre %></td>
+            <td><% @drink.tastes.each do |taste| %>
+                  <%= taste.taste %>
+                <% end %>
+            </td>
+            <td><%= @drink.text %></td>
+            <td><% if @drink.user == current_user %>
+                  <%= link_to"Edit", edit_drink_path(@drink), class: "btn btn-success" %>
+                <% end %>
+            </td>
+            <td><% if @drink.user == current_user %>
+                  <%= link_to"Delete", drink_path(@drink), method: :delete, class: "btn btn-success" %>
+                <% end %>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

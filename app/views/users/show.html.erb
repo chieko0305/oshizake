@@ -1,0 +1,39 @@
+<div class="container px-5 px-sm-0">
+  <div class="row">
+    <div class="col-md-3">
+      <!--部分テンプレート-->
+      <%= render 'drinks/drinks', user: @user,drink: @drink,taste: @taste,tastes: @tastes %>
+      <!--部分テンプレート終-->
+    </div>
+
+    <!--ユーザー詳細-->
+    <div class="col-md-8 offset-md-1">
+      <h1>Drinks</h1>
+      <table class="table table-hover table-inverse">
+        <thead>
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">銘柄</th>
+            <!--<th scope="col">テイスト</th>-->
+            <th scope="col">商品説明</th>
+            <th></th>
+          </tr>
+        </thead>
+         <tbody>
+          <% @drinks.each do |drink| %>
+            <tr>
+              <th scope="col">#</th>
+              <td>
+                <%= link_to drink.brand, drink_path(drink.id) %>
+              </td>
+              <!--<td><%# drink.tastes.each do |taste| %>-->
+              <!--      <%#= taste.taste %>-->
+              <!--    <%# end %>-->
+              <!--</td>UserShowページに必要かどうか検討-->
+              <td><%= drink.text %></td>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
