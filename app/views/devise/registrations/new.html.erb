@@ -9,6 +9,9 @@
   <%= f.text_field :name %>
   </div>
 
+  <h4>プロフィール画像</h4>
+  <%= f.file_field :profile_image, accept: "image/*" %>
+
   <div class="field">
     <%= f.label :email %><br />
     <%= f.email_field :email, autofocus: true, autocomplete: "email" %>

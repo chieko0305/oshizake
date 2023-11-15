@@ -2,6 +2,14 @@
 
 <%= form_with model: @drink do |f| %>
 
+  <h4>画像</h4>
+  <!--アップロードした画像があれば表示する-->
+    <% if @drink.drink_image.attached? %>
+        <!--再アップロードをプレビューするための記述-->
+      <%= image_tag @drink.drink_image, class: "js-item-image" %>
+    <% end %><br>
+    <%= f.file_field :drink_image, accept: "image/*" %>
+
   <h4>銘柄</h4>
   <%= f.text_field :brand %>
 

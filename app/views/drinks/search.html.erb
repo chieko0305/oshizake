@@ -1,9 +1,11 @@
-<h1>Search</h1>
-<div class="col-md-5 my-3 p-3 border shadow-sm">
+<h2 class="my-3 mx-5" style="font-family: Agbalumo; color:#8da0b6">Search</h2>
+<div class="col-md-7 my-3 mx-5 p-3 border shadow-sm">
   <%= form_with url: drinks_path, method: :get, local: true, class: 'boards__searchForm' do |f|%>
+    <div><strong>キーワード</strong></div>
     <div class="input-group">
       <%= f.text_field :brand, class: "form-control search-control", placeholder: "銘柄を入力" %>
     </div>
+    <div><strong>ジャンル</strong></div>
     <div class="input-group">
       <%= f.collection_check_boxes :genres, Drink.genres, :last, :first, include_hidden: false do |b| %>
         <div class="mx-1">
@@ -14,6 +16,7 @@
   	    </div>
       <% end %>
     </div>
+    <div><strong>テイスト</strong></div>
     <div class="input-group">
       <%= f.collection_check_boxes :taste_ids, @tastes, :id, :taste, include_hidden: false do |b| %>
         <div class="mx-1">
@@ -22,9 +25,10 @@
   	    </div>
       <% end %>
     </div>
-    <div>
+    <div class="text-right">
       <%= button_tag type: "submit", class: "border rounded-pill shadow-sm search-btn" do %>
-	      <i class="fas fa-search"></i>
+	      <i class="fas fa-search "></i>
+	      <!--検索ボタンを右寄せにしたい-->
       <% end %>
     </div>
   <% end %>

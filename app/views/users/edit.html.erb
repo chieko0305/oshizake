@@ -1,10 +1,29 @@
 <h1>User Edit</h1>
 <%= form_with model: @user do |f| %>
 
-  <h4>name</h4></h4>
+  <h4>プロフィール画像</h4>
+  <!--アップロードした画像があれば表示する-->
+    <% if @user.profile_image.attached? %>
+      <!--再アップロードをプレビューするための記述-->
+      <%= image_tag @user.profile_image, class: "js-profile-image" %>
+    <% end %><br>
+    <%= f.file_field :profile_image, accept: "image/*" %>
+
+  <h4>name</h4>
   <%= f.text_field :name %>
 
   <h4>introduction</h4>
   <%= f.text_area :introduction %>
+
+  <!--公開ステータスの切り替え-->
+  <div>
+    <%= f.label :status, "公開" %>
+    <%= f.radio_button :status, "released", checked: @user.released? %>
+  </div>
+  <div>
+    <%= f.label :status, "非公開" %>
+    <%= f.radio_button :status, "nonreleased", checked: @user.nonreleased? %>
+  </div>
+
   <%= f.submit '保存' %>
 <% end %>

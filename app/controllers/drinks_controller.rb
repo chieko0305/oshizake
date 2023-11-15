@@ -4,7 +4,7 @@ class DrinksController < ApplicationController
     @tastes = Taste.all
     @drinks = Drink.search(params).page(params[:page])
     @user = current_user
-    # @ranked_drinks = Drink.all
+    @all_ranks = Drink.find(Favorite.group(:drink_id).order('count(drink_id) desc').limit(3).pluck(:drink_id))
   end
 
   def create
@@ -20,8 +20,8 @@ class DrinksController < ApplicationController
 
   def show
     @drink = Drink.find(params[:id])
-    @user = @drink.user #この投稿をしたユーザー
     @tastes = Taste.all
+    @user = @drink.user #ドリンクを投稿したユーザー
   end
 
   def edit
@@ -52,6 +52,6 @@ class DrinksController < ApplicationController
   private
 
   def drink_params
-    params.require(:drink).permit(:brand, :genre, :text, taste_ids: [])
+    params.require(:drink).permit(:drink_image, :brand, :genre, :text, taste_ids: [])
   end
 end

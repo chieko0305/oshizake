@@ -1,0 +1,105 @@
+<%= stylesheet_link_tag 'mypage', media: 'all', 'data-turbolinks-track': 'reload' %>
+<h2 class="my-3 mx-5" style="font-family: Agbalumo; color:#8da0b6">Mypage</h2>
+    <div class="wrap">
+      <ul id="tab-menu">
+        <li><a href="#tab1" class="active" style="font-family: Agbalumo;">about</a></li>
+        <li><a href="#tab2" class="" style="font-family: Agbalumo;">Follow</a></li>
+        <li><a href="#tab3" class="" style="font-family: Agbalumo;">Follower</a></li>
+        <li><a href="#tab4" class="" style="font-family: Agbalumo;">♡</a></li>
+      </ul>
+
+      <div id="tab-contents">
+        <div id="tab1" class="tab">
+          <!--TAB1の中身-->
+            <table>
+              <tr>
+                <div class="my-2" style="width: 100%;">
+                <td>
+                  <div class="mx-2 my-2">
+                    <% if @user.profile_image.attached? %>
+                      <%= image_tag @user.profile_image, size: "200x200" %>
+                      <% else %>
+                      <%= image_tag 'no_image', size: "200x200" %>
+                    <% end %>
+                  </div></td>
+                <td><div class="body">
+                  <h5 class="title"><%= @user.name %></h5>
+                  <p class="text"><%= @user.introduction %></p>
+                    <% if @user == current_user %>
+                    <%= link_to edit_user_path(@user), class:"btn btn-outline-secondary btn-block" do %>
+                      <i class="fa-solid fa-gear"></i>
+                    <% end %>
+                  <% end %></a>
+                </div></td>
+                </div>
+              </tr>
+            </table>
+        </div>
+        <div id="tab2" class="tab">
+          <!--TAB2の中身-->
+          <table class="table">
+            <% @follow.each do |follow| %>
+            <tbody>
+              <tr>
+                <td><% if follow.profile_image.attached? %>
+                  <%= image_tag follow.profile_image, size: "100x100" %>
+                  <% else %>
+                  <%= image_tag 'no_image', size: "100x100" %>
+                  <% end %>
+                </td>
+                <td><%= follow.name %></td>
+              </tr>
+              </tr>
+            </tbody>
+            <% end %>
+          </table>
+        </div>
+
+        <div id="tab3" class="tab">
+          <!--TAB3の中身-->
+          <table class="table">
+            <% @follower.each do |follower| %>
+            <tbody>
+              <tr>
+                <td><% if follower.profile_image.attached? %>
+                  <%= image_tag follower.profile_image, size: "100x100" %>
+                  <% else %>
+                  <%= image_tag 'no_image', size: "100x100" %>
+                  <% end %>
+                </td>
+                <td><%= follower.name %></td>
+              </tr>
+              </tr>
+            </tbody>
+            <% end %>
+          </table>
+        </div>
+
+    <!--TAB4のレイアウト修正-->
+    <div id="tab4" class="tab">
+          <!--TAB4の中身-->
+          <% @favorites.each do |favorite| %>
+          <div>
+            <% @drink = favorite.drink %>
+            <table>
+              <tr>
+                <td><% if @drink.drink_image.attached? %>
+                  <%= image_tag @drink.drink_image, size: "50x50", class: "card-img-top card-img" %>
+                  <% else %>
+                  <%= image_tag 'no_image', size: "50x50", class: "card-img-top card-img" %>
+                <% end %>
+                </td>
+                  <td><%= link_to drink_path(@drink.id) do %>
+                <%= @drink.brand %>
+              <% end %>
+              </td>
+              </tr>
+            </table>
+            </div>
+          <% end %>
+       </div>
+      </div>
+    </div>
+
+
+    <%= javascript_pack_tag 'script', 'data-turbolinks-track': 'reload' %>

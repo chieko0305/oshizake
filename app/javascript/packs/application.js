@@ -12,7 +12,38 @@ import "jquery";
 import "popper.js";
 import "bootstrap";
 import "../stylesheets/application";
+import "../stylesheets/product";
 
 Rails.start()
 Turbolinks.start()
 ActiveStorage.start()
+
+
+$(document).ready(function(){
+
+$("#drink_drink_image").change(function(){ // クリックするinputタグ 適宜
+  var file = this.files[0]; //ファイル情報 編集不要
+  var image = $(".js-item-image"); //プレビュ-を表示させたい要素　適宜
+
+  var reader = new FileReader(); // ファイルオブジェクト
+  reader.onload = function(event){
+    image.attr("src", event.target.result);
+  }
+
+  reader.readAsDataURL(file);
+});
+$("#user_profile_image").change(function(){ // クリックするinputタグ 適宜
+  var file = this.files[0]; //ファイル情報 編集不要
+  var image = $(".js-profile-image"); //プレビュ-を表示させたい要素　適宜
+
+  var reader = new FileReader(); // ファイルオブジェクト
+  reader.onload = function(event){
+    image.attr("src", event.target.result);
+  }
+
+  reader.readAsDataURL(file);
+});
+});
+
+
+

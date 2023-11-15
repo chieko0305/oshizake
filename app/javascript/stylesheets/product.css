@@ -1,0 +1,33 @@
+/*スライダー処理*/
+.slider {
+  position:relative;
+  z-index: 1; /*z-index を持つ要素はより小さな要素の上に重なる*/
+}
+
+.slider-item {
+    width: 100vh;/*各スライダーの幅、.sliderの横幅一杯の100%を指定*/
+    height: 400px;/*各スライダーの高さ、.sliderと同じ高さに指定*/
+    background-repeat: no-repeat;/*背景画像をリピートしない*/
+    background-position: center;/*背景画像の位置を中央に*/
+    background-size: cover;/*背景画像が.slider-item全体を覆い表示*/
+}
+
+
+.top_text{
+  position: absolute;
+  color: white; /*文字の色*/
+  z-index: 2; /*z-index を持つ要素はより小さな要素の上に重なる*/
+  top: 10%; /*上からの配置位置*/
+  left: 40%; /*左からの配置位置*/
+  -webkit-transform: translate(-30%, 0%);
+  text-shadow: 2px 2px 5px black; /*文字の影等の処理*/
+  text-align: center;
+  font-size: 20px; /*文字のサイズ*/
+  letter-spacing: 0.1em; /*文字の感覚*/
+}
+
+.top_text span{
+  font-weight: bold; /*太文字に*/
+  font-size: 34px;
+  vertical-align: bottom;
+}

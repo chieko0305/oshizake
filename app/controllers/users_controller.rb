@@ -1,9 +1,9 @@
 class UsersController < ApplicationController
   def index
-  @drinks = Drink.all
+  @drinks = Drink.page(params[:page])
   @drink = Drink.new
   @user = current_user
-  @users = User.all
+  @users = User.page(params[:page])
   @tastes = Taste.all
   end
 
@@ -11,7 +11,7 @@ class UsersController < ApplicationController
   @user = User.find(params[:id])
   @drink = Drink.new
   @Users = User.all
-  @drinks = @user.drinks
+  @drinks = @user.drinks.page(params[:page])
   @tastes = Taste.all
 
   end
@@ -30,10 +30,27 @@ class UsersController < ApplicationController
     end
   end
 
+
+  def mypage
+    @user = current_user
+    # @users = User.find(params[:user_id])
+  # フォロー一覧
+    @follow = @user.followings
+  # フォロワー一覧
+    @follower = @user.followers
+    # いいね一覧
+    @favorites = Favorite.where(user_id: @user.id)
+
+  end
+
   private
 
   def user_params
-    params.require(:user).permit(:name, :introduction)
+    params.require(:user).permit(:name, :introduction, :profile_image, :status)
+  end
+
+  def set_user
+    @user = User.find(params[:id])
   end
 
 end
