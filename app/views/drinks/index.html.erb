@@ -6,75 +6,31 @@
       <!--部分テンプレート終-->
     </div>
 
-  <!--テーブルを用いないランキングの表示-->
+  <!--ランキングの表示（スワイパー）-->
   <div class="col-md-8 offset-md-1">
   <h2 class="mt-3" style="font-family: Agbalumo; color:#8da0b6">Ranking</h2>
-  <div class="slider" data-turbolinks='false'>
- <% @all_ranks.each.with_index(1) do |drink, i| %>
-    <% if i == 1 %>
-      <div class="card mb-3" style="width: 100%;">
-        <div class="row no-gutters">
-          <div class="col-md-6">
-            <% if drink.drink_image.attached? %>
-              <%= image_tag drink.drink_image, size: "100x100", class: "card-img-top card-img" %>
-              <% else %>
-              <%= image_tag 'no_image', size: "100x100", class: "card-img-top card-img" %>
-            <% end %>
-          </div>
-          <div class="col-md-6">
-            <h5 style="font-family: Agbalumo;">no.<%= i %></h5>
-            <div class="card-body">
-              <h5 class="card-title"><%= drink.brand %></h5>
-              <p class="card-text"><%= drink.text %></p>
-              <p class="card-text"><small class="text-muted"><%= drink.user.name %></small></p>
-              <p class="card-text"><%= link_to "Show", drink_path(drink), class: "btn btn-outline-secondary" %></p>
-            </div>
+  <div class="slider">
+  <% @all_ranks.each.with_index(1) do |drink, i| %>
+    <div class="card mb-3" style="width: 100%;">
+      <div class="row no-gutters">
+        <div class="col-md-6">
+          <% if drink.drink_image.attached? %>
+            <%= image_tag drink.drink_image, size: "100x100", class: "card-img-top card-img" %>
+            <% else %>
+            <%= image_tag 'no_image', size: "100x100", class: "card-img-top card-img" %>
+          <% end %>
+        </div>
+        <div class="col-md-6">
+          <h5 style="font-family: Agbalumo;">no.<%= i %></h5>
+          <div class="card-body">
+            <h5 class="card-title"><%= drink.brand %></h5>
+            <p class="card-text"><%= drink.text %></p>
+            <p class="card-text"><small class="text-muted"><%= drink.user.name %></small></p>
+            <p class="card-text"><%= link_to "Show", drink_path(drink), class: "btn btn-outline-secondary btn-block" %></p>
           </div>
         </div>
       </div>
-      <% elsif i == 2 %>
-        <div class="card mb-3" style="width: 100%;">
-          <div class="row no-gutters">
-            <div class="col-md-6">
-              <% if drink.drink_image.attached? %>
-                <%= image_tag drink.drink_image, size: "100x100", class: "card-img-top card-img" %>
-                <% else %>
-                <%= image_tag 'no_image', size: "100x100", class: "card-img-top card-img" %>
-              <% end %>
-            </div>
-            <div class="col-md-6">
-              <h5 style="font-family: Agbalumo;">no.<%= i %></h5>
-              <div class="card-body">
-                <h5 class="card-title"><%= drink.brand %></h5>
-                <p class="card-text"><%= drink.text %></p>
-                <p class="card-text"><small class="text-muted"><%= drink.user.name %></small></p>
-                <p class="card-text"><%= link_to "Show", drink_path(drink), class: "btn btn-outline-secondary" %></p>
-              </div>
-            </div>
-          </div>
-        </div>
-      <% elsif i == 3 %>
-        <div class="card mb-3" style="width: 100%;">
-          <div class="row no-gutters">
-            <div class="col-md-6">
-              <% if drink.drink_image.attached? %>
-                <%= image_tag drink.drink_image, size: "100x100", class: "card-img-top card-img" %>
-                <% else %>
-                <%= image_tag 'no_image', size: "100x100", class: "card-img-top card-img" %>
-              <% end %>
-            </div>
-            <div class="col-md-6">
-              <h5 style="font-family: Agbalumo;">no.<%= i %></h5>
-              <div class="card-body">
-                <h5 class="card-title"><%= drink.brand %></h5>
-                <p class="card-text"><%= drink.text %></p>
-                <p class="card-text"><small class="text-muted"><%= drink.user.name %></small></p>
-                <p class="card-text"><%= link_to "Show", drink_path(drink), class: "btn btn-outline-secondary" %></p>
-              </div>
-            </div>
-          </div>
-        </div>
-    <% end %>
+    </div>
   <% end %>
 </div>
 
@@ -97,11 +53,13 @@
                 <p class="card-text">
                   <%= drink.text %>
                 </p>
-             <!--部分テンプレート（いいね非同期通信）-->
-                <td id="favorite_buttons_<%= drink.id %>">
-  　　　          <%= render "favorites/favorite", drink: drink %>
-                </td>
-                <%= link_to "Show", drink_path(drink), class: "btn btn-outline-secondary" %>
+                <div class="row mb-1 justify-content-end">
+                  <div class="col-3">
+                  <!--部分テンプレート（いいね非同期通信）-->
+    　　　             <%= render "favorites/favorite", drink: drink %>
+                  </div>
+                  <%= link_to "Show", drink_path(drink), class: "btn btn-outline-secondary btn-block" %>
+                </div>
               </div>
             </div>
           </div>
@@ -112,16 +70,3 @@
 </div>
 
 <%= paginate @drinks %>
-<!--JavaScriptの記述-->
-<script>
-  $('.slider').slick({
-  autoplay: true,//自動的に動き出すか
-  autoplaySpeed: 3000,//次のスライドに切り替わる待ち時間
-  speed: 1500,//スライドの動きのスピード
-  infinite: true,//スライドをループさせるか
-  slidesToShow: 1,//スライドを画面に3枚見せる
-  slidesToScroll: 1,//1回のスクロールで3枚の写真を移動して見せる
-  arrows: false,//画像移動用の矢印の表示
-  dots: true,//下部ドットナビゲーションの表示
-  });
-</script>

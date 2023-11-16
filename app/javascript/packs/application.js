@@ -45,5 +45,19 @@ $("#user_profile_image").change(function(){ // クリックするinputタグ 適
 });
 });
 
+// /drinksランキング
+$(document).on("turbolinks:load", function() {
+  $('.slider').slick({
+    autoplay: true,//自動的に動き出すか
+    autoplaySpeed: 3000,//次のスライドに切り替わる待ち時間
+    speed: 1500,//スライドの動きのスピード
+    infinite: true,//スライドをループさせるか
+    slidesToShow: 1,//スライドを画面に3枚見せる
+    slidesToScroll: 1,//1回のスクロールで3枚の写真を移動して見せる
+    arrows: false,//画像移動用の矢印の表示
+    dots: true,//下部ドットナビゲーションの表示
+  });
+});
+
 
 

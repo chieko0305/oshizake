@@ -6,56 +6,57 @@
       <!--部分テンプレート終-->
     </div>
 
-<!--お酒の詳細-->
-<div class="col-9">
-<!--お酒の詳細修正-->
-<div class="col offset-md-1">
-  <h2 class="mt-3" style="font-family: Agbalumo; color:#8da0b6">Drink detail</h2>
-    <div class="card">
-      <div class="row no-gutters">
-        <div class="col-md-4 d-flex align-items-center justify-content-center" style="max-width: 100%;">
-          <% if @drink.drink_image.attached? %>
-        <%= image_tag @drink.drink_image, size: "200x200" %>
-        <% else %>
-        <%= image_tag 'no_image', size: "200x200" %>
-      <% end %>
-        </div>
-        <div class="col">
-          <div class="card-body">
-            <h5 class="card-title"><%= @drink.brand %></h5>
-            <p class="card-text"><strong>user</strong></p>
-            <p class="card-text"><%= @drink.user.name %> </p>
-            <p class="card-text"><strong>コメント</strong></p>
-            <p class="card-text"><%= @user.introduction %></p>
-            <p class="card-text"><strong>ジャンル</strong></p>
-            <p class="card-text"><%= I18n.t("enums.drink.genres.#{@drink.genre}") %></p>
-            <p class="card-text"><strong>テイスト</strong></p>
-            <p class="card-text">
-              <% @drink.tastes.each do |taste| %>
-                <%= taste.taste %>
+    <!--お酒の詳細-->
+    <div class="col-9">
+    <!--お酒の詳細修正-->
+      <div class="col offset-md-1">
+        <h2 class="mt-3" style="font-family: Agbalumo; color:#8da0b6">Drink detail</h2>
+        <div class="card">
+          <div class="row no-gutters">
+            <div class="col-md-4 mx-4 my-4" style="max-width: 100%;">
+              <% if @drink.drink_image.attached? %>
+                <%= image_tag @drinks.drink_image, size: "200x200" %>
+              <% else %>
+                <%= image_tag 'no_image', size: "200x200" %>
               <% end %>
-            </p>
-            <p class="card-text"><% if @drink.favorited_by?(current_user) %>
-              <p><%= link_to drink_favorite_path(@drink), method: :delete do %>
-              ♥<%= @drink.favorites.count %> いいね
-            <% end %></p>
-            <% else %>
-            <p><%= link_to drink_favorite_path(@drink), method: :post do %>
-              ♡<%= @drink.favorites.count %>
-            <% end %></p>
-          <% end %></p>
-          <div class="boxes width: 100%;">
-            <p class="card-text"><small class="text-muted"><% if @drink.user == current_user %>
-              <%= link_to"Edit", edit_drink_path(@drink), class: "btn btn-outline-secondary" %>
-              <% end %></small>
-            </p>
-            <p class="card-text"><small class="text-muted"><% if @drink.user == current_user %>
-              <%= link_to"Delete", drink_path(@drink), method: :delete, class: "btn btn-outline-secondary" %>
-            <% end %></small>
-            </p>
+            </div>
+            <div class="col">
+              <div class="card-body">
+                <h5 class="card-title"><%= @drinks.brand %></h5>
+                <p class="card-text"><strong>user</strong></p>
+                <p class="card-text"><%= @drinks.user.name %> </p>
+                <p class="card-text"><strong>コメント</strong></p>
+                <p class="card-text"><%= @user.introduction %></p>
+                <p class="card-text"><strong>ジャンル</strong></p>
+                <p class="card-text"><%= I18n.t("enums.drink.genres.#{@drinks.genre}") %></p>
+                <p class="card-text"><strong>テイスト</strong></p>
+                <p class="card-text">
+                  <% @drink.tastes.each do |taste| %>
+                    <%= taste.taste %>
+                  <% end %>
+                </p>
+                <div class="row mb-1 justify-content-end">
+                  <div class="col-3">
+                  <!--部分テンプレート（いいね非同期通信）-->
+                  <%= render "favorites/favorite", drink: @drinks %>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col"><small class="text-muted"><% if @drinks.user == current_user %>
+                    <%= link_to"Edit", edit_drink_path(@drinks), class: "btn btn-outline-secondary btn-block" %>
+                    <% end %></small>
+                  </div>
+                  <div class="col"><small class="text-muted"><% if @drinks.user == current_user %>
+                    <%= link_to"Delete", drink_path(@drinks), method: :delete, class: "btn btn-outline-secondary btn-block" %>
+                    <% end %></small>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </div>
     </div>
   </div>
+</div>
 

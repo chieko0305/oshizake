@@ -1,26 +1,42 @@
-<h1>編集画面</h1>
-
-<%= form_with model: @drink do |f| %>
-
-  <h4>画像</h4>
-  <!--アップロードした画像があれば表示する-->
-    <% if @drink.drink_image.attached? %>
-        <!--再アップロードをプレビューするための記述-->
-      <%= image_tag @drink.drink_image, class: "js-item-image" %>
-    <% end %><br>
-    <%= f.file_field :drink_image, accept: "image/*" %>
-
-  <h4>銘柄</h4>
-  <%= f.text_field :brand %>
-
-  <h4>ジャンル</h4>
-  <%= f.select :genre, Drink.genres.keys.map { |k| [I18n.t("enums.drink.genres.#{k}"), k] } %>
-
-  <h4>テイスト</h4>
-  <%= f.collection_check_boxes(:taste_ids, @tastes, :id, :taste) do |b| %>
-    <%= b.label { b.check_box + b.text } %>
-  <% end %>
-  <h4>紹介文</h4>
-  <%= f.text_area :text %>
-  <%= f.submit '保存' %>
-<% end %>
+<div class="container px-5 px-sm-0">
+  <div class="row">
+    <div class="col-md-5">
+      <h2 class="my-3 mx-5" style="font-family: Agbalumo; color:#8da0b6">Edit</h2>
+      <%= form_with model: @drink do |f| %>
+        <div class="form-group px-3 py-3 border shadow-sm">
+      <strong>Image</strong>
+          <%= f.file_field :drink_image, accept: "image/*",class: "-moz-box-sizing: border-box;-webkit-box-sizing: border-box;box-sizing: border-box;", style:"width:100%" %>
+          <div class="form-group">
+            <strong>Brand</strong><br>
+            <%= f.text_field :brand %>
+          </div>
+        <div class="form-group">
+          <strong>ジャンル</strong><br>
+          <%= f.select :genre, Drink.genres.keys.map { |k| [I18n.t("enums.drink.genres.#{k}"), k] } %>
+        </div>
+        <div class="form-group">
+          <strong>テイスト</strong><br>
+          <div class="col">
+            <div class="tag-search">
+              <div class="d-flex flex-row flex-wrap">
+                <%= f.collection_check_boxes :taste_ids, @tastes, :id, :taste do |b| %>
+            	    <div class="mx-1">
+            	      <%= b.check_box %>
+            	      <%= b.label %>
+            	    </div>
+                <% end %>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="form-group">
+          <strong>コメント</strong><br>
+          <%= f.text_area :text %>
+        </div>
+        <div class="form-group">
+          <%= f.submit 'Update', class:'btn btn-outline-secondary btn-block' %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>

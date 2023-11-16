@@ -1,29 +1,31 @@
-<h1>User Edit</h1>
-<%= form_with model: @user do |f| %>
-
-  <h4>プロフィール画像</h4>
-  <!--アップロードした画像があれば表示する-->
-    <% if @user.profile_image.attached? %>
-      <!--再アップロードをプレビューするための記述-->
-      <%= image_tag @user.profile_image, class: "js-profile-image" %>
-    <% end %><br>
-    <%= f.file_field :profile_image, accept: "image/*" %>
-
-  <h4>name</h4>
-  <%= f.text_field :name %>
-
-  <h4>introduction</h4>
-  <%= f.text_area :introduction %>
-
-  <!--公開ステータスの切り替え-->
-  <div>
-    <%= f.label :status, "公開" %>
-    <%= f.radio_button :status, "released", checked: @user.released? %>
+<div class="container px-5 px-sm-0">
+  <div class="row">
+    <div class="col-md-5">
+      <h2 class="my-3 mx-5" style="font-family: Agbalumo; color:#8da0b6">Edit</h2>
+      <%= form_with model: @user do |f| %>
+        <div class="form-group px-3 py-3 border shadow-sm">
+          <!--アップロードした画像があれば表示する-->
+          <% if @user.profile_image.attached? %>
+            <!--再アップロードをプレビューするための記述-->
+            <%= image_tag @user.profile_image, class: "js-profile-image" %>
+          <% end %><br>
+          <%= f.file_field :profile_image, accept: "image/*" %>
+          <h4>name</h4>
+          <%= f.text_field :name %>
+          <h4>introduction</h4>
+          <%= f.text_area :introduction %>
+          <!--公開ステータスの切り替え-->
+          <div>
+            <%= f.label :status, "公開" %>
+            <%= f.radio_button :status, "released", checked: @user.released? %>
+          </div>
+          <div>
+            <%= f.label :status, "非公開" %>
+            <%= f.radio_button :status, "nonreleased", checked: @user.nonreleased? %>
+          </div>
+          <%= f.submit 'Update', class:'btn btn-outline-secondary btn-block' %>
+        <% end %>
+      </div>
+    </div>
   </div>
-  <div>
-    <%= f.label :status, "非公開" %>
-    <%= f.radio_button :status, "nonreleased", checked: @user.nonreleased? %>
-  </div>
-
-  <%= f.submit '保存' %>
-<% end %>
+</div>

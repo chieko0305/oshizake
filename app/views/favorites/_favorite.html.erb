@@ -1,11 +1,11 @@
 <% if drink.favorited_by?(current_user) %>
-  <p id="favorite_buttons_<%= drink.id %>"><%= link_to drink_favorite_path(drink), method: :delete, remote: true do %>
+  <span id="favorite_buttons_<%= drink.id %>"><%= link_to drink_favorite_path(drink), method: :delete, remote: true do %>
       ♥<%= drink.favorites.count %>
     <% end %>
-  </p>
+  </span>
   <% else %>
-  <p id="favorite_buttons_<%= drink.id %>"><%= link_to drink_favorite_path(drink), method: :post, remote: true do %>
+  <span id="favorite_buttons_<%= drink.id %>"><%= link_to drink_favorite_path(drink), method: :post, remote: true do %>
     ♡<%= drink.favorites.count %>
   <% end %>
-  </p>
+  </span>
 <% end %>
