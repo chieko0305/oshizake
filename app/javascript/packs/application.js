@@ -23,7 +23,7 @@ $(document).ready(function(){
 
 $("#drink_drink_image").change(function(){ // クリックするinputタグ 適宜
   var file = this.files[0]; //ファイル情報 編集不要
-  var image = $(".js-item-image"); //プレビュ-を表示させたい要素　適宜
+  var image = $("#js-item-image"); //プレビュ-を表示させたい要素　適宜
 
   var reader = new FileReader(); // ファイルオブジェクト
   reader.onload = function(event){
@@ -34,7 +34,7 @@ $("#drink_drink_image").change(function(){ // クリックするinputタグ 適�
 });
 $("#user_profile_image").change(function(){ // クリックするinputタグ 適宜
   var file = this.files[0]; //ファイル情報 編集不要
-  var image = $(".js-profile-image"); //プレビュ-を表示させたい要素　適宜
+  var image = $("#js-profile-image"); //プレビュ-を表示させたい要素　適宜
 
   var reader = new FileReader(); // ファイルオブジェクト
   reader.onload = function(event){

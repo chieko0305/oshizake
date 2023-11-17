@@ -51,12 +51,12 @@
                   <%= drink.brand %>
                 </h5>
                 <p class="card-text">
-                  <%= drink.text %>
+                  <%= drink.text.truncate(20) %>
                 </p>
                 <div class="row mb-1 justify-content-end">
-                  <div class="col-3">
                   <!--部分テンプレート（いいね非同期通信）-->
-    　　　             <%= render "favorites/favorite", drink: drink %>
+                  <div id="favorite_buttons_<%= drink.id %>" class="col-6 offset-6 col-lg-4 offset-lg-8">
+  　　　               <%= render "favorites/favorite", drink: drink %>
                   </div>
                   <%= link_to "Show", drink_path(drink), class: "btn btn-outline-secondary btn-block" %>
                 </div>

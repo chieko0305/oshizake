@@ -5,6 +5,11 @@
       <%= form_with model: @drink do |f| %>
         <div class="form-group px-3 py-3 border shadow-sm">
       <strong>Image</strong>
+          <% if @drink.drink_image.attached? %>
+            <%= image_tag @drink.drink_image, id:"js-item-image",style:"width:40%;" %>
+          <% else %>
+            <%= image_tag "no_image.jpg", id:"js-item-image",style:"width:40%;" %>
+          <% end %>
           <%= f.file_field :drink_image, accept: "image/*",class: "-moz-box-sizing: border-box;-webkit-box-sizing: border-box;box-sizing: border-box;", style:"width:100%" %>
           <div class="form-group">
             <strong>Brand</strong><br>
@@ -40,3 +45,4 @@
     </div>
   </div>
 </div>
+
