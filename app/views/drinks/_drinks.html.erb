@@ -5,7 +5,7 @@
     <%= msg %>
   <% end %>
 <% end %>
-<%= form_with model: drink do |f| %>
+<%= form_with model: drink, url: drinks_path do |f| %>
   <div class="form-group px-3 py-3 border shadow-sm">
   <strong>Image</strong>
   <%= f.file_field :drink_image, accept: "image/*",class: "-moz-box-sizing: border-box;-webkit-box-sizing: border-box;box-sizing: border-box;", style:"width:100%" %>

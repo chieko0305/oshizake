@@ -93,11 +93,13 @@
                 <p class="card-text">
                   <%= drink.text %>
                 </p>
-                <%= link_to "Show", drink_path(drink), class: "btn btn-outline-secondary" %>
+                <div class="row mb-1 justify-content-end">
              <!--部分テンプレート（いいね非同期通信）-->
-              <td id="favorite_buttons_<%= drink.id %>">
-　　　          <%= render "favorites/favorite", drink: drink %>
-              </td>
+                  <div id="favorite_buttons_<%= drink.id %>" class="col-6 offset-6 col-lg-4 offset-lg-8">
+                   <%= render "favorites/favorite", drink: drink %>
+                  </div>
+                  <%= link_to "Show", drink_path(drink), class: "btn btn-outline-secondary btn-block" %>
+                </div>
               </div>
             </div>
           </div>

@@ -19,10 +19,10 @@ class DrinksController < ApplicationController
   end
 
   def show
-    @drink = Drink.new
-    @drinks = Drink.find(params[:id])
+    @new_drink = Drink.new
+    @drink = Drink.find(params[:id])
     @tastes = Taste.all
-    @user = @drinks.user #ドリンクを投稿したユーザー
+    @user = @drink.user #ドリンクを投稿したユーザー
   end
 
   def edit

@@ -4,7 +4,6 @@
       <h2 class="my-3 mx-5" style="font-family: Agbalumo; color:#8da0b6">Edit</h2>
       <%= form_with model: @drink do |f| %>
         <div class="form-group px-3 py-3 border shadow-sm">
-      <strong>Image</strong>
           <% if @drink.drink_image.attached? %>
             <%= image_tag @drink.drink_image, id:"js-item-image",style:"width:40%;" %>
           <% else %>

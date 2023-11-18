@@ -2,7 +2,7 @@
   <div class="row">
     <div class="col-3">
       <!--部分テンプレート-->
-      <%= render 'drinks', user: @drink.user, drink: @drink, taste: @taste, tastes: @tastes %>
+      <%= render 'drinks', user: @drink.user, drink: @new_drink, taste: @taste, tastes: @tastes %>
       <!--部分テンプレート終-->
     </div>
 
@@ -15,20 +15,20 @@
           <div class="row no-gutters">
             <div class="col-md-4 mx-4 my-4" style="max-width: 100%;">
               <% if @drink.drink_image.attached? %>
-                <%= image_tag @drinks.drink_image, size: "200x200" %>
+                <%= image_tag @drink.drink_image, size: "200x200" %>
               <% else %>
                 <%= image_tag 'no_image', size: "200x200" %>
               <% end %>
             </div>
             <div class="col">
               <div class="card-body">
-                <h5 class="card-title"><%= @drinks.brand %></h5>
+                <h5 class="card-title"><%= @drink.brand %></h5>
                 <p class="card-text"><strong>user</strong></p>
-                <p class="card-text"><%= @drinks.user.name %> </p>
+                <p class="card-text"><%= @drink.user.name %> </p>
                 <p class="card-text"><strong>コメント</strong></p>
                 <p class="card-text"><%= @user.introduction %></p>
                 <p class="card-text"><strong>ジャンル</strong></p>
-                <p class="card-text"><%= I18n.t("enums.drink.genres.#{@drinks.genre}") %></p>
+                <p class="card-text"><%= I18n.t("enums.drink.genres.#{@drink.genre}") %></p>
                 <p class="card-text"><strong>テイスト</strong></p>
                 <p class="card-text">
                   <% @drink.tastes.each do |taste| %>
@@ -36,18 +36,18 @@
                   <% end %>
                 </p>
                 <div class="row mb-1 justify-content-end">
-                  <div class="col-3">
                   <!--部分テンプレート（いいね非同期通信）-->
-                  <%= render "favorites/favorite", drink: @drinks %>
+                  <div id="favorite_buttons_<%= @drink.id %>" class="col-6 offset-6 col-lg-4 offset-lg-8">
+                    <%= render "favorites/favorite", drink: @drink %>
                   </div>
                 </div>
                 <div class="row">
-                  <div class="col"><small class="text-muted"><% if @drinks.user == current_user %>
-                    <%= link_to"Edit", edit_drink_path(@drinks), class: "btn btn-outline-secondary btn-block" %>
+                  <div class="col"><small class="text-muted"><% if @drink.user == current_user %>
+                    <%= link_to"Edit", edit_drink_path(@drink), class: "btn btn-outline-secondary btn-block" %>
                     <% end %></small>
                   </div>
-                  <div class="col"><small class="text-muted"><% if @drinks.user == current_user %>
-                    <%= link_to"Delete", drink_path(@drinks), method: :delete, class: "btn btn-outline-secondary btn-block" %>
+                  <div class="col"><small class="text-muted"><% if @drink.user == current_user %>
+                    <%= link_to"Delete", drink_path(@drink), method: :delete, class: "btn btn-outline-secondary btn-block" %>
                     <% end %></small>
                   </div>
                 </div>
