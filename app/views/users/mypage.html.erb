@@ -19,7 +19,7 @@
                     <% if @user.profile_image.attached? %>
                       <%= image_tag @user.profile_image, size: "200x200" %>
                       <% else %>
-                      <%= image_tag asset_path('no_image'), size: "200x200" %>
+                      <%= image_tag asset_path('no_image.'), size: "200x200" %>
                     <% end %>
                   </div></td>
                 <td><div class="body">
@@ -44,7 +44,7 @@
                 <td><% if follow.profile_image.attached? %>
                   <%= image_tag follow.profile_image, size: "100x100" %>
                   <% else %>
-                  <%= image_tag asset_path('no_image'), size: "100x100" %>
+                  <%= image_tag asset_path('no_image.jpg'), size: "100x100" %>
                   <% end %>
                 </td>
                 <td><%= follow.name %></td>
@@ -64,7 +64,7 @@
                 <td><% if follower.profile_image.attached? %>
                   <%= image_tag follower.profile_image, size: "100x100" %>
                   <% else %>
-                  <%= image_tag asset_path('no_image'), size: "100x100" %>
+                  <%= image_tag asset_path('no_image.jpg'), size: "100x100" %>
                   <% end %>
                 </td>
                 <td><%= follower.name %></td>
@@ -86,7 +86,7 @@
                 <td><% if @drink.drink_image.attached? %>
                   <%= image_tag @drink.drink_image, size: "50x50", class: "card-img-top card-img" %>
                   <% else %>
-                  <%= image_tag asset_path('no_image'), size: "50x50", class: "card-img-top card-img" %>
+                  <%= image_tag asset_path('no_image.jpg'), size: "50x50", class: "card-img-top card-img" %>
                 <% end %>
                 </td>
                   <td><%= link_to drink_path(@drink.id) do %>
