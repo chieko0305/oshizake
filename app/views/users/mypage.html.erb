@@ -19,7 +19,7 @@
                     <% if @user.profile_image.attached? %>
                       <%= image_tag @user.profile_image, size: "200x200" %>
                       <% else %>
-                      <%= image_tag 'no_image', size: "200x200" %>
+                      <%= image_tag asset_path('no_image'), size: "200x200" %>
                     <% end %>
                   </div></td>
                 <td><div class="body">
@@ -44,7 +44,7 @@
                 <td><% if follow.profile_image.attached? %>
                   <%= image_tag follow.profile_image, size: "100x100" %>
                   <% else %>
-                  <%= image_tag 'no_image', size: "100x100" %>
+                  <%= image_tag asset_path('no_image'), size: "100x100" %>
                   <% end %>
                 </td>
                 <td><%= follow.name %></td>
@@ -64,7 +64,7 @@
                 <td><% if follower.profile_image.attached? %>
                   <%= image_tag follower.profile_image, size: "100x100" %>
                   <% else %>
-                  <%= image_tag 'no_image', size: "100x100" %>
+                  <%= image_tag asset_path('no_image'), size: "100x100" %>
                   <% end %>
                 </td>
                 <td><%= follower.name %></td>
