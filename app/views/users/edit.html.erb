@@ -9,7 +9,7 @@
             <!--再アップロードをプレビューするための記述-->
             <%= image_tag @user.profile_image, id: "js-profile-image",style:"width:40%;" %>
           <% else %>
-            <%= image_tag "no_image.jpg", id:"js-profile-image",style:"width:40%;" %>
+            <%= image_tag asset_path('no_image.jpg'), id:"js-profile-image",style:"width:40%;" %>
           <% end %><br>
           <%= f.file_field :profile_image, accept: "image/*" %>
           <h4>name</h4>
