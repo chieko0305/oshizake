@@ -86,7 +86,7 @@
                 <td><% if @drink.drink_image.attached? %>
                   <%= image_tag @drink.drink_image, size: "50x50", class: "card-img-top card-img" %>
                   <% else %>
-                  <%= image_tag 'no_image', size: "50x50", class: "card-img-top card-img" %>
+                  <%= image_tag asset_path('no_image'), size: "50x50", class: "card-img-top card-img" %>
                 <% end %>
                 </td>
                   <td><%= link_to drink_path(@drink.id) do %>
