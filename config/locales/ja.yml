@@ -6,6 +6,7 @@ ja:
         wine: ワイン
         wiskey: ウィスキー
         shouchu: 焼酎
+        nihonnshu: 日本酒
         other: その他
   activerecord:
     models:

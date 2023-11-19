@@ -8,7 +8,7 @@ class Drink < ApplicationRecord
   has_one_attached :drink_image
 
   #ジャンルの選択ができる
-  enum genre: { beer: 0, wine: 1, wiskey: 2, shouchu: 3, other: 4 }
+  enum genre: { beer: 0, wine: 1, wiskey: 2, shouchu: 3, nihonnshu: 4, other: 5 }
 
   validates :brand, presence: true
   validates :genre, presence: true

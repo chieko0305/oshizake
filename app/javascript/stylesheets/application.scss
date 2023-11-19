@@ -37,3 +37,9 @@ justify-content: center;
 body {
   background-image: image-url("../images/no_image.jpg");
 }
+img {
+    vertical-align: middle;
+    border-style: none;
+    /* object-fit: cover; */
+    object-fit: contain;
+}
