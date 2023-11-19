@@ -71,7 +71,7 @@ ActiveRecord::Schema.define(version: 2023_11_12_120109) do
   end
 
   create_table "tastes", force: :cascade do |t|
-    t.integer "taste", null: false
+    t.string "taste", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
