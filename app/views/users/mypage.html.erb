@@ -41,13 +41,18 @@
             <% @follow.each do |follow| %>
             <tbody>
               <tr>
-                <td><% if follow.profile_image.attached? %>
+                <td>
+                  <% if follow.profile_image.attached? %>
                   <%= image_tag follow.profile_image, size: "100x100" %>
                   <% else %>
                   <%= image_tag asset_path('no_image.jpg'), size: "100x100" %>
                   <% end %>
                 </td>
-                <td><%= follow.name %></td>
+                <td>
+                  <%= link_to user_path(follow) do %>
+                    <%= follow.name %>
+                  <% end %>
+                </td>
               </tr>
               </tr>
             </tbody>
@@ -67,7 +72,11 @@
                   <%= image_tag asset_path('no_image.jpg'), size: "100x100" %>
                   <% end %>
                 </td>
-                <td><%= follower.name %></td>
+                <td>
+                  <%= link_to user_path(follower) do %>
+                    <%= follower.name %>
+                  <% end %>
+                </td>
               </tr>
               </tr>
             </tbody>
@@ -78,25 +87,29 @@
     <!--TAB4のレイアウト修正-->
     <div id="tab4" class="tab">
           <!--TAB4の中身-->
-          <% @favorites.each do |favorite| %>
-          <div>
-            <% @drink = favorite.drink %>
-            <table>
-              <tr>
-                <td><% if @drink.drink_image.attached? %>
-                  <%= image_tag @drink.drink_image, size: "50x50", class: "card-img-top card-img" %>
-                  <% else %>
-                  <%= image_tag asset_path('no_image.jpg'), size: "50x50", class: "card-img-top card-img" %>
-                <% end %>
-                </td>
-                  <td><%= link_to drink_path(@drink.id) do %>
-                <%= @drink.brand %>
-              <% end %>
-              </td>
-              </tr>
-            </table>
-            </div>
-          <% end %>
+          <table class="table">
+            <% @favorites.each do |favorite| %>
+              <div>
+                <% @drink = favorite.drink %>
+                  <tbody>
+                    <tr>
+                      <td>
+                        <% if @drink.drink_image.attached? %>
+                          <%= image_tag @drink.drink_image, size: "50x50", class: "card-img-top card-img" %>
+                        <% else %>
+                          <%= image_tag asset_path('no_image.jpg'), size: "50x50", class: "card-img-top card-img" %>
+                        <% end %>
+                      </td>
+                      <td>
+                        <%= link_to drink_path(@drink.id) do %>
+                        <%= @drink.brand %>
+                        <% end %>
+                      </td>
+                    </tr>
+                  </tbody>
+                </div>
+            <% end %>
+          </table>
        </div>
       </div>
     </div>

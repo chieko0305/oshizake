@@ -69,6 +69,17 @@
             <p class="card-text"><%= @user.introduction %></p>
             <p class="card-text"><small class="text-muted">follow <%= @user.followings.count %></small></p>
             <p class="card-text"><small class="text-muted">follower <%= @user.followers.count %></small></p>
+            <p>
+              <% if current_user.following?(@user) %>
+                <%= link_to user_relationships_path(@user.id), class:"btn btn-outline-secondary width: 50%;", method: :delete do %>
+                  <i class="fa-solid fa-user-minus">フォローを外す</i>
+                <% end %>
+              <% else %>
+                <%= link_to user_relationships_path(@user.id), class:"btn btn-outline-secondary", method: :post do %>
+                  <i class="fa-solid fa-user-plus">フォローする</i>
+                <% end %>
+              <% end %>
+            </p>
         </div>
       </div>
     </div>

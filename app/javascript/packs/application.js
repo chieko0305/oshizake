@@ -19,6 +19,7 @@ Turbolinks.start()
 ActiveStorage.start()
 
 
+$(document).on('turbolinks:load', function() {
 $(document).ready(function(){
 
 $("#drink_drink_image").change(function(){ // クリックするinputタグ 適宜
@@ -42,6 +43,7 @@ $("#user_profile_image").change(function(){ // クリックするinputタグ 適
   }
 
   reader.readAsDataURL(file);
+});
 });
 });
 
