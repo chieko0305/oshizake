@@ -10,7 +10,7 @@ class DrinksController < ApplicationController
   def create
     @drink = current_user.drinks.new(drink_params)
     if @drink.save
-      redirect_to drinks_path, notice: "お酒を投稿しました"
+      redirect_to drink_path(@drink), notice: "お酒を投稿しました"
     else
       @tastes = Taste.all
       @drinks = Drink.all
