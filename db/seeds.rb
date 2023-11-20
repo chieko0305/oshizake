@@ -14,7 +14,7 @@ tanaka_sakura = User.find_or_create_by!(email: "jimin@example.com") do |user|
   user.name = "田中さくら"
   user.password = "password"
   user.introduction = "日本酒が大好きです"
-  # user.status = "1"
+  user.status = :nonreleased
   user.profile_image = ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/sample-user1.jpg"), filename:"sample-user1.jpg")
 end
 
@@ -22,7 +22,7 @@ satou_misaki = User.find_or_create_by!(email: "mingi@example.com") do |user|
   user.name = "佐藤みさき"
   user.password = "password"
   user.introduction = "ウイスキー始めました"
-  # user.status = "1"
+  user.status = :released
   user.profile_image = ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/sample-user2.jpg"), filename:"sample-user2.jpg")
 end
 
@@ -30,7 +30,7 @@ nakamura_yuri = User.find_or_create_by!(email: "usik@example.com") do |user|
   user.name = "中村ゆり"
   user.password = "password"
   user.introduction = "ワインが一番好きなお酒です。最近はワインの勉強も頑張っています！"
-  # user.status = "1"
+  user.status = :released
   user.profile_image = ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/sample-user3.jpg"), filename:"sample-user3.jpg")
 end
 
@@ -38,7 +38,7 @@ kobayashi_haruka = User.find_or_create_by!(email: "kimata@example.com") do |user
   user.name = "小林はるか"
   user.password = "password"
   user.introduction = "日本酒を熱燗で飲むのが大好きです"
-  # user.status = "1"
+  user.status = :released
   user.profile_image = ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/sample-user4.jpg"), filename:"sample-user4.jpg")
 end
 
@@ -46,7 +46,7 @@ watanabe_marin = User.find_or_create_by!(email: "hasegawa@example.com") do |user
   user.name = "渡辺まりん"
   user.password = "password"
   user.introduction = "お酒は何でも大好きです"
-  # user.status = "1"
+  user.status = :released
   user.profile_image = ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/sample-user5.jpg"), filename:"sample-user5.jpg")
 end
 
@@ -54,7 +54,7 @@ kato_yuko = User.find_or_create_by!(email: "dokugiri@example.com") do |user|
   user.name = "加藤ゆうこ"
   user.password = "password"
   user.introduction = "最近チャミスルにハマってます"
-  # user.status = "1"
+  user.status = :released
   user.profile_image = ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/sample-user6.jpg"), filename:"sample-user6.jpg")
 end
 
@@ -62,7 +62,7 @@ yamada_kenji = User.find_or_create_by!(email: "donnsoku@example.com") do |user|
   user.name = "山田けんじ"
   user.password = "password"
   user.introduction = "お酒あまり強くないです"
-  # user.status = "1"
+  user.status = :released
   user.profile_image = ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/sample-user7.jpg"), filename:"sample-user7.jpg")
 end
 
@@ -70,7 +70,7 @@ suzuki_taro = User.find_or_create_by!(email: "sadao@example.com") do |user|
   user.name = "鈴木たろう"
   user.password = "password"
   user.introduction = "お酒大好きです"
-  # user.status = "1"
+  user.status = :released
   user.profile_image = ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/sample-user8.jpg"), filename:"sample-user8.jpg")
 end
 
@@ -78,16 +78,23 @@ ito_kazuya = User.find_or_create_by!(email: "asei@example.com") do |user|
   user.name = "伊藤かずや "
   user.password = "password"
   user.introduction = "ビールと日本酒が一番好きなお酒です"
-  # user.status = "1"
+  user.status = :released
   user.profile_image = ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/sample-user9.jpg"), filename:"sample-user9.jpg")
 end
 
-saito_koji= User.find_or_create_by!(email: "yazawa@example.com") do |user|
+saito_koji = User.find_or_create_by!(email: "yazawa@example.com") do |user|
   user.name = "斉藤こうじ"
   user.password = "password"
   user.introduction = "ビールしか飲みません"
-  # user.status = "1"
+  user.status = :released
   user.profile_image = ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/sample-user10.jpg"), filename:"sample-user10.jpg")
+end
+
+guest = User.find_or_create_by!(email: "guest@example.com") do |user|
+  user.name = "guest"
+  user.password = "password"
+  user.introduction = "guestアカウントです"
+  user.status = :nonreleased
 end
 
 tanaka_sakura.follow(satou_misaki.id)
