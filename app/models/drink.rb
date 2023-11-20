@@ -19,9 +19,17 @@ class Drink < ApplicationRecord
 
   def self.search(params)
     drinks = all
-    if params[:brand].present?
-      drinks = drinks.where(brand: params[:brand])
+    # もとの正しい記述(完全一致)
+    # if params[:brand].present?
+    #   drinks = drinks.where(brand: params[:brand])
+    # end
+
+    # 部分一致
+    if params[:brand] == "partial_match"
+      @drinks = Drink.where('brand like ?','%{params[:brand]}%')
     end
+    # 部分一致終わり
+
     if params[:genres].present?
       drinks = drinks.where(genre: params[:genres])
     end
@@ -32,3 +40,21 @@ class Drink < ApplicationRecord
     drinks
   end
 end
+
+
+    # #空欄検索
+    #   if params[:search] == nil || ''
+    #   @drinks= Drink.all
+    # elsif params[:search] == ''
+    #   @drinks= Drink.all
+    # else
+    #   #部分検索
+    #   @drinks = Drink.where("brand LIKE ? ",'%' + params[:search] + '%')
+    #   end
+
+
+    #     if params[:brand].present? && params[:search].present?
+    #   drinks = drinks.where("brand LIKE ?", '%' + params[:search] + '%')
+    # elsif params[:brand].present?
+    #   drinks = drinks.where(brand: params[:brand])
+    # end

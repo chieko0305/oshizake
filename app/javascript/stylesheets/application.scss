@@ -43,3 +43,13 @@ img {
     /* object-fit: cover; */
     object-fit: contain;
 }
+
+a {
+    CONTAIN-INTRINSIC-BLOCK-SIZE: AUTO 100PX;
+    color: #bc8f8f;
+    text-decoration: none;
+    background-color: transparent;
+}
+a:hover{
+  color: #8da0b6;
+}

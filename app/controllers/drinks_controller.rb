@@ -2,6 +2,9 @@ class DrinksController < ApplicationController
   def index
     @drink = Drink.new
     @tastes = Taste.all
+    # 公開アカウントの投稿のみ見せる記述
+    # @users = User.released.order(created_at: :desc)
+    # @drinks = @users.drink.search(params).page(params[:page])
     @drinks = Drink.search(params).page(params[:page])
     @user = current_user
     @all_ranks = Drink.find(Favorite.group(:drink_id).order('count(drink_id) desc').limit(3).pluck(:drink_id))

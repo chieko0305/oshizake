@@ -3,7 +3,9 @@ class UsersController < ApplicationController
   @drinks = Drink.page(params[:page])
   @drink = Drink.new
   @user = current_user
-  @users = User.page(params[:page])
+  # @users = User.page(params[:page])
+  # 公開ユーザーのみ表示させる記述
+  @users = User.released.order(created_at: :desc).page(params[:page])
   @tastes = Taste.all
   end
 
@@ -41,6 +43,19 @@ class UsersController < ApplicationController
     # いいね一覧
     @favorites = Favorite.where(user_id: @user.id)
 
+  end
+
+# ユーザーの公開、非公開切り替え
+  def release
+    @user =  User.find(params[:user_id])
+    @user.released! unless @user.released?
+    redirect_to  "/users/#{@user.id}/edit", notice: 'このアカウントを公開しました'
+  end
+
+  def nonrelease
+    @user =  User.find(params[:user_id])
+    @user.nonreleased! unless @user.nonreleased?
+    redirect_to "/users/#{@user.id}/edit", notice: 'このアカウントを非公開にしました'
   end
 
   private
