@@ -3,9 +3,7 @@ class UsersController < ApplicationController
   @drinks = Drink.page(params[:page])
   @drink = Drink.new
   @user = current_user
-  # @users = User.page(params[:page])
-  # 公開ユーザーのみ表示させる記述
-  @users = User.released.order(created_at: :desc).page(params[:page])
+  @users = User.publics.page(params[:page])
   @tastes = Taste.all
   end
 

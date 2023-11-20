@@ -1,4 +1,7 @@
 class User < ApplicationRecord
+  scope :publics, -> { where(status: 'released') }
+  scope :not_publics, -> { where.not(status: 'released') }
+
   has_many :drinks
   has_many :favorites, dependent: :destroy
   # フォローをした、されたの関係

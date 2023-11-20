@@ -1,4 +1,7 @@
 class Drink < ApplicationRecord
+  scope :publics, -> { includes(:user).where('users.status': 'released') }
+  scope :not_publics, -> { includes(:user).where.not('users.status': 'released') }
+  
   belongs_to :user
   has_many :drink_tastes, dependent: :destroy
   has_many :tastes, through: :drink_tastes
@@ -16,6 +19,8 @@ class Drink < ApplicationRecord
   def favorited_by?(user)
     favorites.exists?(user_id: user.id)
   end
+  
+  
 
   def self.search(params)
     drinks = all
@@ -23,10 +28,9 @@ class Drink < ApplicationRecord
     # if params[:brand].present?
     #   drinks = drinks.where(brand: params[:brand])
     # end
-
     # 部分一致
-    if params[:brand] == "partial_match"
-      @drinks = Drink.where('brand like ?','%{params[:brand]}%')
+    if params[:brand].present?
+      drinks = drinks.where('brand like ?',"%#{params[:brand]}%")
     end
     # 部分一致終わり
 
