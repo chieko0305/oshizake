@@ -3,7 +3,7 @@
   <%= form_with url: drinks_path, method: :get, local: true, class: 'boards__searchForm' do |f|%>
     <div><strong>キーワード</strong></div>
     <div class="input-group">
-      <%= f.text_field :brand, class: "form-control search-control", placeholder: "銘柄を入力" %>
+      <%= f.text_field :brand, class: "form-control search-control", placeholder: "キーワードを入力" %>
     </div>
     <div><strong>ジャンル</strong></div>
     <div class="input-group">
