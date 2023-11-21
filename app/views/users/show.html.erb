@@ -7,16 +7,25 @@
 
     <!--ユーザー情報の表示-->
     <div class="col-md-8 offset-md-1">
-      
+
       <%= render "users/user_info", user: @user %>
- 
+
     <!--ユーザーが投稿したお酒一覧、レイアウト修正-->
 
-      
+
       <% if @user.status == "released" %>
         <%= render "drinks/drinks", drinks: @drinks %>
       <% else %>
         <%= render "drinks/nonreleased_drinks" %>
+      <% end %>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-11">
+    </div>
+    <div class="col-1">
+      <%= link_to :back do %>
+        <i class="fa-solid fa-angles-left fa-2xl"></i>
       <% end %>
     </div>
   </div>
