@@ -20,7 +20,7 @@
   </head>
 
 
-  <!--<body class="back_ground">-->
+  <body>
   <!--フォント style="font-family: Agbalumo;" -->
 
 
@@ -106,12 +106,14 @@
     <% if flash[:notice].present? %>
       <div><%= flash[:notice] %></div>
     <% end %>
-
-    <%= yield %>
-  </body>
+      <main>
+      <%= yield %>
+      </main>
+  </div>
     <footer>
     　<div class="copyright text-center" style="color:#f8f9fa; background-color:#bc8f8f;">
     　　<p>© 2023 xxxxxxxxxxCorp. All Rights Reserved.</p>
     　</div>
     </footer>
+    </body>
 </html>
