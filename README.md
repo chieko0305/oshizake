@@ -32,3 +32,12 @@
 ​
 ## 使用素材
 - 外部サービスの使用検討中です。
+
+## ER図
+![推し酒 drawio](https://github.com/chieko0305/oshizake/assets/143895457/ce1901eb-62f8-454e-b659-5ed7024f391d)
+
+## 実装機能一覧
+https://docs.google.com/spreadsheets/d/135Vfq-3u8l4AjY47ChKnxyAy7GjJI7x2rq57AWaVvIE/edit#gid=885378170
+
+## テーブル定義書
+https://docs.google.com/spreadsheets/d/1V0xpbHNpUo0xHv7SHj05-cqicUuernxU/edit#gid=22058163
