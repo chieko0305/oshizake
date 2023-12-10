@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  post 'guest_sign_in', to: 'sessions#guest_sign_in'
   get 'relationships/followings'
   get 'relationships/followers'
   devise_for :users

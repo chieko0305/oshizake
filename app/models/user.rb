@@ -36,4 +36,28 @@ class User < ApplicationRecord
     followings.include?(user)
   end
 
+  # ゲストユーザー
+  def self.guest
+    find_or_create_by!(email: 'guest@example.com') do |user|
+      user.password = SecureRandom.urlsafe_base64
+      user.password_confirmation = user.password
+      user.name = "ゲストユーザー"
+    end
+  end
+
+  # ユーザー名のバリデーション
+  VALID_NAME_REGEX = /\A[a-zA-Z0-9]+\z/ # 半角英数字のみ受け付けるようにする
+  validates :name, presence: true, uniqueness: { case_sensitive: false },
+                                   length: { maximum: 30 },
+                                   format: { with: VALID_NAME_REGEX },
+                                   if: :require_validation?
+                                   # ↑ guestがtrueの場合のみ、バリデーションを除外する
+
+private
+
+  def require_validation?
+        return true if self.guest == false || self.guest == 0
+        false
+  end
+
 end

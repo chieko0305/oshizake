@@ -1,7 +1,7 @@
 <div class="container">
   <div class="row">
     <div class="mx-auto col-11 col-sm-10 col-lg-8 col-xl-6">
-<h2 class="my-3 text-center" style="font-family: Agbalumo; color:#8da0b6">welcome  to  Oshizake<i class="fa-regular fa-moon fa-flip-horizontal"></i></h2>
+      <h2 class="my-3 text-center" style="font-family: Agbalumo; color:#8da0b6">welcome  to  Oshizake<i class="fa-regular fa-moon fa-flip-horizontal"></i></h2>
       <div class="btn-wrapper col-10 mx-auto">
         <div class="row my-2">
           <%= link_to 'Log in', user_session_path, class:"btn btn-outline-secondary btn-block", method: :POST %>
@@ -9,6 +9,10 @@
         <div class="row my-2">
           <%= link_to 'Sign up', new_user_registration_path, class:"btn btn-outline-secondary btn-block" %>
         </div>
+        <div class="row my-2">
+          <%= link_to 'guest Log in', guest_sign_in_path, class:"btn btn-outline-secondary", method: :post %>
+        </div>
       </div>
     </div>
   </div>
+</div>
