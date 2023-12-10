@@ -170,8 +170,8 @@
 
 
 
-Drink.create!(
-  [
+# Drink.create!(
+#   [
 #     {drink_image: ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/sample-drink1.jpg"), filename:"sample-drink1.jpg"), brand:'十七代', text: 'おすすめの日本酒です。', genre: 'nihonnshu', user_id: 1 },
 #     {drink_image: ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/sample-drink2.jpg"), filename:"sample-drink2.jpg"), brand:'ジョニーウォーカー', text: 'ハイボールで飲むと美味しいです！', genre: 'wine', user_id: 2 },
 #     {drink_image: ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/sample-drink3.jpg"), filename:"sample-drink3.jpg"), brand:'カロンセギュール', text: '記念日におすすめ！', genre: 'wine', user_id: 3 },
@@ -182,23 +182,23 @@ Drink.create!(
 #     {drink_image: ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/sample-drink8.jpg"), filename:"sample-drink8.jpg"), brand:'だいやめ', text: '香りが良いのでロックで飲むのがおすすめです。', genre: 'shouchu', user_id: 8 },
 #     {drink_image: ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/sample-drink9.jpg"), filename:"sample-drink9.jpg"), brand:'オールドパー', text: 'ロックで飲むのをおすすめします。', genre: 'wiskey', user_id: 9 },
 #     {drink_image: ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/sample-drink10.jpg"), filename:"sample-drink10.jpg"), brand:'キリンビール', text: '晩酌の定番です！', genre: 'beer', user_id: 10 },
-      {drink_image: ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/sample-drink11.jpg"), filename:"sample-drink11.jpg"), brand:'レモンサワー', text: 'レモン多めで作っています', genre: 'other', user_id: 2 },
-      {drink_image: ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/sample-drink12.jpg"), filename:"sample-drink12.jpg"), brand:'白州　ハイボール', text: '強炭酸割りが好みです', genre: 'wiskey', user_id: 2 },
-      {drink_image: ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/sample-drink13.jpg"), filename:"sample-drink13.jpg"), brand:'獺祭', text: '最近日本酒を初めてみました', genre: 'nihonnshu', user_id: 2 },
-      {drink_image: ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/sample-drink14.jpg"), filename:"sample-drink14.jpg"), brand:'ラフロイグ', text: '香りが独特でハマりました', genre: 'other', user_id: 2 },
-      {drink_image: ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/sample-drink15.jpg"), filename:"sample-drink15.jpg"), brand:'ジャックダニエル', text: '定番の！', genre: 'wiskey', user_id: 2 },
-      {drink_image: ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/sample-drink16.jpg"), filename:"sample-drink16.jpg"), brand:'Grant’s', text: '最近これにハマってます', genre: 'wiskey', user_id: 4 },
-      {drink_image: ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/sample-drink17.jpg"), filename:"sample-drink17.jpg"), brand:'モヒート', text: '夏におすすめのカクテルです', genre: 'other', user_id: 4 },
-      {drink_image: ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/sample-drink18.jpg"), filename:"sample-drink18.jpg"), brand:'ジンジャーハイボール', text: 'この飲み方だと飲みやすくて進みます', genre: 'wiskey', user_id: 4 },
-      {drink_image: ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/sample-drink19.jpg"), filename:"sample-drink19.jpg"), brand:'富野宝山', text: '家に常備してあります。クセがなくて飲みやすいと思います！', genre: 'shouchu', user_id: 4 },
-      {drink_image: ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/sample-drink20.jpg"), filename:"sample-drink20.jpg"), brand:'サングリア', text: 'ワインが苦手な方にも飲みやすくておすすめです', genre: 'wine', user_id: 4 },
-      {drink_image: ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/sample-drink21.jpg"), filename:"sample-drink21.jpg"), brand:'アルパカ', text: 'コンビニワインの中で一番美味しいです', genre: 'wine', user_id: 7 },
-      {drink_image: ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/sample-drink22.jpg"), filename:"sample-drink22.jpg"), brand:'ベルエポック', text: '美味しい！プレゼントにおすすめです', genre: 'other', user_id: 7 },
-      {drink_image: ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/sample-drink23.jpg"), filename:"sample-drink23.jpg"), brand:'黒伊佐錦', text: '炭酸わりで飲んでます', genre: 'shouchu', user_id: 7 },
-      {drink_image: ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/sample-drink24.jpg"), filename:"sample-drink24.jpg"), brand:'韓国ビール　TERRA', text: '最近日本でも買えるようになりました！', genre: 'beer', user_id: 7 },
+#       {drink_image: ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/sample-drink11.jpg"), filename:"sample-drink11.jpg"), brand:'レモンサワー', text: 'レモン多めで作っています', genre: 'other', user_id: 2 },
+#       {drink_image: ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/sample-drink12.jpg"), filename:"sample-drink12.jpg"), brand:'白州　ハイボール', text: '強炭酸割りが好みです', genre: 'wiskey', user_id: 2 },
+#       {drink_image: ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/sample-drink13.jpg"), filename:"sample-drink13.jpg"), brand:'獺祭', text: '最近日本酒を初めてみました', genre: 'nihonnshu', user_id: 2 },
+#       {drink_image: ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/sample-drink14.jpg"), filename:"sample-drink14.jpg"), brand:'ラフロイグ', text: '香りが独特でハマりました', genre: 'other', user_id: 2 },
+#       {drink_image: ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/sample-drink15.jpg"), filename:"sample-drink15.jpg"), brand:'ジャックダニエル', text: '定番の！', genre: 'wiskey', user_id: 2 },
+#       {drink_image: ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/sample-drink16.jpg"), filename:"sample-drink16.jpg"), brand:'Grant’s', text: '最近これにハマってます', genre: 'wiskey', user_id: 4 },
+#       {drink_image: ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/sample-drink17.jpg"), filename:"sample-drink17.jpg"), brand:'モヒート', text: '夏におすすめのカクテルです', genre: 'other', user_id: 4 },
+#       {drink_image: ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/sample-drink18.jpg"), filename:"sample-drink18.jpg"), brand:'ジンジャーハイボール', text: 'この飲み方だと飲みやすくて進みます', genre: 'wiskey', user_id: 4 },
+#       {drink_image: ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/sample-drink19.jpg"), filename:"sample-drink19.jpg"), brand:'富野宝山', text: '家に常備してあります。クセがなくて飲みやすいと思います！', genre: 'shouchu', user_id: 4 },
+#       {drink_image: ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/sample-drink20.jpg"), filename:"sample-drink20.jpg"), brand:'サングリア', text: 'ワインが苦手な方にも飲みやすくておすすめです', genre: 'wine', user_id: 4 },
+#       {drink_image: ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/sample-drink21.jpg"), filename:"sample-drink21.jpg"), brand:'アルパカ', text: 'コンビニワインの中で一番美味しいです', genre: 'wine', user_id: 7 },
+#       {drink_image: ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/sample-drink22.jpg"), filename:"sample-drink22.jpg"), brand:'ベルエポック', text: '美味しい！プレゼントにおすすめです', genre: 'other', user_id: 7 },
+#       {drink_image: ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/sample-drink23.jpg"), filename:"sample-drink23.jpg"), brand:'黒伊佐錦', text: '炭酸わりで飲んでます', genre: 'shouchu', user_id: 7 },
+#       {drink_image: ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/sample-drink24.jpg"), filename:"sample-drink24.jpg"), brand:'韓国ビール　TERRA', text: '最近日本でも買えるようになりました！', genre: 'beer', user_id: 7 },
 
-  ]
-)
+#   ]
+# )
 
 # Taste.create([
 #   { taste: '和食' },

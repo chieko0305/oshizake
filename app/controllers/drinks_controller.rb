@@ -28,22 +28,33 @@ class DrinksController < ApplicationController
   def edit
     @drink = Drink.find(params[:id])
     @tastes = Taste.all
+    unless @drink.user == current_user
+      redirect_to  drink_path(@drink)
+    end
   end
 
   def update
     @drink = Drink.find(params[:id])
-    if @drink.update(drink_params)
-      flash[:notice] = "編集しました"
-      redirect_to drink_path(@drink)
+    if @drink.user != current_user
+      redirect_to  new_post_path
     else
+      if @drink.update(drink_params)
+        flash[:notice] = "編集しました"
+        redirect_to drink_path(@drink)
+      else
       render :edit
+      end
     end
   end
 
   def destroy
     drink = Drink.find(params[:id])
-    drink.destroy
-    redirect_to '/drinks'
+    if drink.user != current_user
+      redirect_to  '/drinks'
+    else
+      drink.destroy
+      redirect_to  '/drinks'
+    end
   end
 
   def search
